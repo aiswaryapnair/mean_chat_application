@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Arsha Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <!-- <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+
+  <!-- Google Fonts -->
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
+
+  <!-- Template Main CSS File -->
+  <!-- <link href="style.css" rel="stylesheet"> -->
+
+  <!-- =======================================================
+  * Template Name: Arsha - v4.7.1
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="index.html"><small style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">ChatApp</small></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <!-- <a  ><button class="btn-space  btn btn-success">signup</button></a> -->
+
+          <li><a class="nav-link scrollto" routerLink="signup" >Signup</a></li>
+          <li><a class="nav-link " href="#">Contact Us</a></li>
+         
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <!-- <h1>Better Solutions For Your Business</h1>
+          <h2>We are team of talented designers making websites with Bootstrap</h2>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+           -->
+           <form class="form-brd" method="POST"  #userForm="ngForm" (ngSubmit)="userVarify()" novalidate >
+            <h3 class="text-center text-info">LOGIN</h3>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"></label>
+              <input type="text"  class="form-control" id="name" name="name" placeholder=" Username" required [(ngModel)]="user.username"
+              #username="ngModel" [class.is-invalid]="username.invalid && username.touched"></div>
+              <div *ngIf="username.errors && (username.invalid || username.touched)">
+                <small class="text-danger" *ngIf="username.errors.required" [class.d-none]="username.valid || username.untouched">Username cannot be empty</small>
+             </div><br>
+          
+            <div class="mb-3">
+              <input type="password"  id="psw" name="psw" class="form-control " placeholder="Password" required [(ngModel)]="user.password"
+              #password="ngModel"  [class.is-invalid]="password.invalid && password.touched" pattern="^[\w\S]{8,16}$">
+            </div>
+            <div *ngIf="password.errors && (password.invalid || password.touched)">
+              <small class="text-danger" *ngIf="password.errors.required" [class.d-none]="password.valid || password.untouched">Password cannot be empty</small>
+              <small class="text-danger" *ngIf="password.errors.pattern" [class.d-none]="password.valid || password.untouched">Password must be minimum 8 characters</small>
+           </div>
+            <br>
+            <div class=" d-grid gap2">
+              <button [disabled]="userForm.form.invalid"  type="submit" class="btn btn-primary">Submit</button>
+            </div><br>
+            <a href=""><h6 class="text-center">Forgotten Password?</h6></a>
+            <hr>
+            <div class="d-grid gap-2 col-4 mx-auto">
+              <a routerLink="signup"><button class="btn btn-colr"  type="button">Create An Account</button></a>
+            </div></form>
+        <!-- </div> -->
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="assets/uploads/hero-img.png" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients section-bg">
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in">
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Cliens Section -->
+    <!-- ======= About Us Section ======= -->
+    <!-- <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>About Us</h2>
+          </div>
+  
+          <div class="row content">
+            <div class="col-lg-6">
+                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. -->
+<!--                
+       
+              <ul>
+                <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
+                <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0">
+              <p>
+                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <a href="#" class="btn-learn-more">Learn More</a>
+            </div>
+          </div>
+  
+        </div>
+      </section>  -->
+      <!-- End About Us Section -->
+  
+<!-- <!.......Footer.....-->   
+<footer id="footer">
+<div class="container footer-bottom clearfix">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Chitchat</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+      Designed by <a href="http://localhost:4200/">Aiswarya</a>
+    </div>
+  </div>
+</footer><!-- End Footer -->
+
+

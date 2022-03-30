@@ -1,0 +1,137 @@
+<div class="card ">
+    
+    <div class="card-header msg_head">
+        <div class="d-flex bd-highlight">
+            <div class="img_cont">
+                <img src="assets/uploads/user1.jpg" class="rounded-circle user_img">
+                <span class="online_icon"></span>
+            </div>
+            <div class="user_info">
+                <span>{{toUser}}</span>
+                <p>Online</p>
+            </div>
+       
+   
+
+<span style="margin-left: 350px;"></span>
+<div  >
+         <span style="margin: 5px;" *ngIf="!isBlocked" class="opt"> <button (click)="blockUser()" title="Block User" class="btn" style="color:  #dc3545;">Block <i class="fas fa-user-alt-slash"></i></button></span> 
+         <span *ngIf="isBlocked" class="opt"> <button (click)="unblockUser()" title="Unlock User" class="btn btn-outline-danger">Unblock <i class="fas fa-user-alt"></i></button></span> 
+         <span *ngIf="!isMuted" class="opt"> <button (click)="muteUser()" title="Mute User" class="btn " style="color: #af6c07;">Mute <i class="fas fa-volume-mute"></i></button></span>       
+         <span *ngIf="isMuted" class="opt"> <button (click)="unmuteUser()" title="Unmute User" class="btn btn-outline-warning" style="color: #af6c07;">Unmute <i class="fas fa-volume-off"></i></button></span>
+         <span style="margin: 5px;"><button (click)="closeChat()" title="Close Chat" class="btn-close"><i class="fas fa-times"></i></button></span>
+        </div></div></div>
+        <div class="card-body msg_card_body ">
+            <!-- chat messages ui -->
+            <div *ngFor="let message of messageArray">
+                  <!-- <div class="message">
+                      <p> <b> {{message.from}}: &nbsp;</b> {{message.message}} </p>
+                      <img src="http://localhost:3000/uploads/{{message.image}}" *ngIf="message.image">                       
+                  </div> -->
+                  <div class=" my-message" *ngIf="message.from==username">
+
+                    <div class="msg_cotainer">
+                   <!-- <div> <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
+         </div> -->
+                    
+                      {{message.message}}
+                      <!-- <img src="http://localhost:3000/uploads/{{message.image}}" *ngIf="message.image">                        -->
+
+                      <!-- <div >  -->
+                      <!-- <span    *ngIf="message.isForwarded"><em>Forwarded</em></span> -->
+                      <div  style="float: right;">
+                        <!-- <div   class="dropdown-container" tabindex="-1" class="three-dots"></div>
+                        <div  class="dropdown"> -->
+                         <!-- <a href=""><i class="fas fa-forward"  > -->
+                          <!-- <div > -->
+                              <button (click)="displaycontact(message)"><i class="fas fa-share"></i></button>
+                             
+                          
+                  
+                  
+                           <!-- </div> -->
+                          <!-- </i></a>  -->
+                          <!-- <div><span (click)="saveForwardData(message)">Forward</span></div> -->
+                      <!-- <ul><a><i class="bi bi-forward" title="Forward Message"  data-toggle="modal" data-target="#forwardModal"  (click)="saveForwardData(message)">Copy</i> </a></ul> -->
+                     
+
+                    </div>
+                      <img src="http://localhost:3000/uploads/{{message.image}}" *ngIf="message.image">
+
+                      <span  class="msg_time_send">{{message.date}}</span>
+                    </div>
+                    <br>
+                  </div>
+                  <div class="contact-message" *ngIf="message.from!=username" >
+                    <div class="msg_cotainer_send" *ngIf="!isBlocked" >
+                        <!-- <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg"> -->
+                            {{message.message}} 
+                            <div  style="float: right;">
+                            <img src="http://localhost:3000/uploads/{{message.image}}" *ngIf="message.image" >
+                            
+                              <button (click)="displaycontact(message)"><i class="fas fa-share"></i></button>
+
+</div>
+                                <span  class="msg_time_send">{{message.date}}</span>
+                    </div>
+                   <br>
+                  </div>
+            </div>
+            
+            </div>
+            <hr>
+          
+            <!-- form for sending message -->
+            <form #sendForm="ngForm" (ngSubmit)="sendMessage()" *ngIf="!isBlocked">
+            <div class="chat-send row">
+                <div class="col-lg-8 form-group">
+                    <input type="text" class="form-control" name="message" id="input-message"
+                      placeholder="Type your message here.." [(ngModel)]="newMessage">
+                </div>
+                <div class="col-lg-2 form-group">
+                    <input type="file" class="form-control" style="border:none;justify-content:center;padding-right: 0;color: white;" name="image" id="input-image" (change)="selectImage($event)">
+                </div>
+                <div class="col-lg-2">
+                    <button type="submit" class="btn btn-primary">Send <i class="fas fa-paper-plane"></i></button> 
+                    
+                </div>
+            </div>
+            </form>
+          
+          
+            <div class="alert alert-danger text-center" role="alert" *ngIf="isBlocked">
+                <strong>Click on Unblock to start messaging</strong>
+              </div>
+          </div>
+          
+          <!-- Modal -->
+          <!-- <div class="modal fade" id="forwardModal" tabindex="-1" aria-labelledby="exampleModalLabel" >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Forward Message</h5>
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> <i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                   <div >
+                    <table class="table table-striped">
+             
+                        <tbody>
+                          <tr *ngFor="let i of contactsList">
+                            
+                            <td>{{i.name}}</td>
+                            <td><button (click)="forwardMessage(i)"><i class="fas fa-share"></i></button></td>
+                          </tr>
+          
+                        </tbody>
+                      </table>
+          
+          
+                   </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
